@@ -82,20 +82,6 @@ dialog?.addEventListener('click', (event) => {
   if (!inside) dialog.close();
 });
 
-const consultationCard = document.querySelector('[data-consultation-card]');
-const consultationClose = consultationCard?.querySelector('[data-consultation-close]');
-const consultationOpen = consultationCard?.querySelector('[data-consultation-open]');
-
-const setConsultationCollapsed = (collapsed) => {
-  if (!consultationCard || !consultationOpen) return;
-  consultationCard.classList.toggle('is-collapsed', collapsed);
-  consultationOpen.disabled = !collapsed;
-  consultationOpen.setAttribute('aria-expanded', String(!collapsed));
-};
-
-consultationClose?.addEventListener('click', () => setConsultationCollapsed(true));
-consultationOpen?.addEventListener('click', () => setConsultationCollapsed(false));
-
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {

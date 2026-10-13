@@ -3140,6 +3140,167 @@ p, li, blockquote { text-wrap: pretty; }
   }
 }
 
+/* Persistent price offer replaces the floating consultation card. */
+.floating-offer {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 45;
+  width: min(560px, calc(100vw - 44px));
+  display: grid;
+  grid-template-columns: auto auto minmax(150px, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 11px 12px 11px 15px;
+  color: var(--ink);
+  background: rgba(255,255,255,.96);
+  border: 1px solid #cbd8e8;
+  border-radius: 16px;
+  box-shadow: 0 18px 48px rgba(16,35,61,.2);
+  backdrop-filter: blur(15px);
+}
+.floating-offer__price {
+  display: grid;
+  gap: 2px;
+  white-space: nowrap;
+}
+.floating-offer__price s {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1;
+}
+.floating-offer__price strong {
+  color: var(--blue);
+  font-size: 25px;
+  line-height: 1;
+  letter-spacing: -.035em;
+}
+.floating-offer__timer {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  padding: 0 14px;
+  border-inline: 1px solid #dce4ee;
+}
+.floating-offer__timer > span {
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.floating-offer__clock {
+  display: flex;
+  align-items: baseline;
+  color: var(--ink);
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.floating-offer__clock b {
+  min-width: 22px;
+  text-align: center;
+}
+.floating-offer__clock b:last-child {
+  min-width: 31px;
+  color: var(--blue);
+  font-size: 13px;
+}
+.floating-offer__clock i {
+  padding-inline: 2px;
+  color: #91a0b2;
+  font-style: normal;
+}
+.floating-offer__button {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 11px 16px;
+  color: var(--ink);
+  background: #ffe066;
+  border: 1px solid #e5c94a;
+  border-radius: 11px;
+  box-shadow: 0 9px 22px rgba(177,139,0,.2);
+  font-size: 14px;
+  font-weight: 850;
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  animation: floating-offer-pulse 1.8s ease-in-out infinite;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.floating-offer__button:hover {
+  background: #ffd33d;
+  transform: translateY(-1px);
+  box-shadow: 0 13px 28px rgba(177,139,0,.28);
+}
+.floating-offer__button:focus-visible {
+  outline: 3px solid rgba(201,169,0,.4);
+  outline-offset: 3px;
+}
+.floating-offer__button svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes floating-offer-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 9px 22px rgba(177,139,0,.2); }
+  50% { transform: scale(1.025); box-shadow: 0 12px 29px rgba(177,139,0,.31); }
+}
+
+@media (max-width: 520px) {
+  body { padding-bottom: 82px; }
+  .floating-offer {
+    right: 10px;
+    bottom: 10px;
+    width: calc(100vw - 20px);
+    grid-template-columns: auto auto minmax(0, 1fr);
+    gap: 8px;
+    padding: 8px;
+    border-radius: 13px;
+  }
+  .floating-offer__price { gap: 1px; }
+  .floating-offer__price s { font-size: 9px; }
+  .floating-offer__price strong { font-size: 20px; }
+  .floating-offer__timer {
+    gap: 0;
+    padding: 0 7px;
+  }
+  .floating-offer__timer > span { display: none; }
+  .floating-offer__clock { font-size: 15px; }
+  .floating-offer__clock b { min-width: 19px; }
+  .floating-offer__clock b:last-child { min-width: 27px; font-size: 11px; }
+  .floating-offer__clock i { padding-inline: 1px; }
+  .floating-offer__button {
+    min-height: 46px;
+    gap: 6px;
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .floating-offer__button svg { display: none; }
+  .floating-offer__button { padding-inline: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-offer__button { animation: none; }
+}
+
 /* Expanded desktop navigation. */
 .desktop-nav {
   gap: 22px;

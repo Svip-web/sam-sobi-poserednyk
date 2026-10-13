@@ -549,23 +549,18 @@
     </section>
   </main>
 
-  <aside class="consultation-card consultation-card--floating" id="floating-consultation" data-consultation-card aria-label="Онлайн-консультація">
-    <button class="consultation-close" type="button" data-consultation-close aria-label="Згорнути консультацію">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M17 7 7 17"></path></svg>
-    </button>
-    <button class="consultation-photo consultation-reopen" type="button" data-consultation-open aria-label="Відкрити консультацію" aria-controls="floating-consultation" disabled>
-      <img src="assets/tetiana-optimized.webp" alt="Тетяна Григор’єва" width="1200" height="1799" loading="lazy" decoding="async" fetchpriority="low">
-      <span class="consultation-status-dot" aria-hidden="true"></span>
-    </button>
-    <div class="consultation-copy">
-      <span class="consultation-online"><i aria-hidden="true"></i>Онлайн</span>
-      <strong>Потрібна консультація?</strong>
-      <small>Напишіть — підкажемо, з чого почати</small>
+  <aside class="floating-offer" aria-label="Спеціальна ціна курсу">
+    <div class="floating-offer__price"><s>2500 грн</s><strong>790 грн</strong></div>
+    <div class="floating-offer__timer">
+      <span>До підняття ціни</span>
+      <div class="floating-offer__clock" data-countdown aria-label="Залишилось до підняття ціни">
+        <b data-unit="minutes">59</b><i>:</i><b data-unit="seconds">59</b><i>:</i><b data-unit="milliseconds">000</b>
+      </div>
     </div>
-    <button class="consultation-button" type="button">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.5 9.5 9.5 0 0 1-4-.9L3 21l1.7-4.7A8.5 8.5 0 1 1 21 11.5Z"></path><path d="M8 12h.01M12 12h.01M16 12h.01"></path></svg>
-      Написати
-    </button>
+    <a class="floating-offer__button" href="#price">
+      <span>Отримати курс</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+    </a>
   </aside>
 
   <footer class="site-footer">
