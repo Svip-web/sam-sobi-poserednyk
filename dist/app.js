@@ -52,16 +52,17 @@ function renderCountdown() {
   const hours = Math.floor((remaining % 86400000) / 3600000);
   const minutes = Math.floor((remaining % 3600000) / 60000);
   const seconds = Math.floor((remaining % 60000) / 1000);
-  const parts = { days, hours, minutes, seconds };
+  const milliseconds = remaining % 1000;
+  const parts = { days, hours, minutes, seconds, milliseconds };
   countdownNodes.forEach((node) => {
     Object.entries(parts).forEach(([unit, value]) => {
       const target = node.querySelector(`[data-unit="${unit}"]`);
-      if (target) target.textContent = String(value).padStart(2, '0');
+      if (target) target.textContent = String(value).padStart(unit === 'milliseconds' ? 3 : 2, '0');
     });
   });
 }
 renderCountdown();
-let countdownTimer = window.setInterval(renderCountdown, 1000);
+let countdownTimer = window.setInterval(renderCountdown, 40);
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
     window.clearInterval(countdownTimer);
@@ -69,7 +70,7 @@ document.addEventListener('visibilitychange', () => {
     return;
   }
   renderCountdown();
-  if (!countdownTimer) countdownTimer = window.setInterval(renderCountdown, 1000);
+  if (!countdownTimer) countdownTimer = window.setInterval(renderCountdown, 40);
 });
 
 const dialog = document.querySelector('[data-dialog]');

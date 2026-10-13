@@ -4379,3 +4379,52 @@ p, li, blockquote { text-wrap: pretty; }
     margin: 0;
   }
 }
+
+/* Five-part countdowns: milliseconds stay readable without widening mobile cards. */
+.countdown {
+  grid-template-columns:
+    minmax(50px, 1fr) 8px
+    minmax(50px, 1fr) 8px
+    minmax(50px, 1fr) 8px
+    minmax(50px, 1fr) 8px
+    minmax(62px, 1.08fr);
+  gap: 2px;
+}
+.countdown-unit--milliseconds b {
+  letter-spacing: -.025em;
+}
+.countdown-unit--milliseconds small {
+  font-size: 9px;
+}
+.hero-timer {
+  width: min(100%, 630px);
+  grid-template-columns: auto minmax(390px, 1fr);
+}
+
+@media (max-width: 520px) {
+  .hero-timer {
+    grid-template-columns: 1fr;
+  }
+  .countdown {
+    grid-template-columns:
+      minmax(38px, 1fr) 6px
+      minmax(38px, 1fr) 6px
+      minmax(38px, 1fr) 6px
+      minmax(38px, 1fr) 6px
+      minmax(48px, 1.08fr);
+    gap: 1px;
+  }
+  .countdown b {
+    min-height: 42px;
+    padding-inline: 4px;
+    font-size: 18px;
+  }
+  .countdown-unit small,
+  .countdown-unit--milliseconds small {
+    font-size: 8px;
+  }
+  .countdown > i {
+    width: 6px;
+    margin-top: 10px;
+  }
+}
