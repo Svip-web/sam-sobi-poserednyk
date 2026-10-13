@@ -3301,6 +3301,29 @@ p, li, blockquote { text-wrap: pretty; }
   .floating-offer__button { animation: none; }
 }
 
+/* Keep the navigation visible while preserving space for it in the document flow. */
+:root { --fixed-header-height: 76px; }
+html { scroll-padding-top: calc(var(--fixed-header-height) + 16px); }
+body { padding-top: var(--fixed-header-height); }
+.site-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(255,255,255,.94);
+  border-bottom: 1px solid rgba(177,194,214,.72);
+  box-shadow: 0 8px 24px rgba(16,35,61,.08);
+  backdrop-filter: blur(16px);
+}
+.site-header .header-inner { min-height: var(--fixed-header-height); }
+main > section[id] { scroll-margin-top: calc(var(--fixed-header-height) + 16px); }
+
+@media (max-width: 767px) {
+  :root { --fixed-header-height: 70px; }
+}
+
 /* Expanded desktop navigation. */
 .desktop-nav {
   gap: 22px;
